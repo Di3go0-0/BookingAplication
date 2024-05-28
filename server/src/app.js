@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import authRoutes from "./routers/auth.routes.js";
 import bookingRoutes from "./routers/booking.routes.js";
+import token from './routers/token.routes.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import {URL_FRONTEND} from './config.js'
@@ -20,6 +21,7 @@ app.use(cors({
   optionsSuccessStatus: 204
 }));
 
+app.use("/api/token", token)
 app.use("/api/booking", bookingRoutes)
 app.use("/api/auth", authRoutes)
 
