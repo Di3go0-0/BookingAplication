@@ -8,8 +8,21 @@ import { Observable } from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
+  apiURL:String = 'http://localhost:3600/';
+
   checkToken(): Observable<any> {
     let token = document.cookie.split('=')[1]; // Obtiene el token de las cookies
-    return this.http.post('http://localhost:3600/api/token/', { token: token }, { withCredentials: true });
+    return this.http.post(this.apiURL+'api/token/', { token: token }, { withCredentials: true });
   }
+
+  login(email: string, pass: string): Observable<any> {
+    return this.http.post(this.apiURL+'api/auth/login', { email, pass }, { withCredentials: true });
+  }
+  
+  getBookings(): Observable<any> {
+    return this.http.get(this.apiURL+'api/booking', { withCredentials: true });
+  }
+
+
+
 }

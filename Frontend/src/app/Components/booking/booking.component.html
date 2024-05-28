@@ -1,1 +1,8 @@
-<p>booking works!</p>
+<div class="container">
+    <div class="carta" *ngFor="let item of bookingData">
+        <h1 id="name">{{item.firstName}} {{item.lastName}}</h1>
+        <h1 id="streetAddress">{{item.streetAddress}}</h1>
+        <h1 id="BookingTime">{{item.bookingTime}}</h1>
+        <h1 id="BookingTime">${{item.bookingPrice}}</h1>
+    </div>
+</div>
