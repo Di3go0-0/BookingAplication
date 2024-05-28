@@ -4,6 +4,7 @@ import authRoutes from "./routers/auth.routes.js";
 import bookingRoutes from "./routers/booking.routes.js";
 import cookieParser from "cookie-parser";
 import cors from 'cors';
+import {URL_FRONTEND} from './config.js'
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use("/api/booking", bookingRoutes)
 app.use("/api/auth", authRoutes)
 
 app.use(cors({
-  origin: 'http://localhost:4200'
+  origin: URL_FRONTEND
 }));
 
 
