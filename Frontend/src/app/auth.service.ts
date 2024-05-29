@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { timer, Observable } from 'rxjs';
+import { switchMap } from 'rxjs'; 
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,10 @@ export class AuthService {
   }
   
   getBookings(): Observable<any> {
-    return this.http.get(this.apiURL+'api/booking', { withCredentials: true });
-  }
+    return timer(0, 5000).pipe( // 0 es el tiempo de inicio y 5000 es el intervalo en milisegundos (5 segundos)
+        switchMap(() => this.http.get(this.apiURL+'api/booking', { withCredentials: true }))
+    );
+}
 
 
 
